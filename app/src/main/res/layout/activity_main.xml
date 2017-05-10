@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+  <data>
+    <import type="android.view.View"/>
+    <variable
+        name="counter"
+        type="com.gigigo.myapplication.Counter"
+        />
+    <variable
+        name="temp"
+        type="com.gigigo.myapplication.TemperatureData"
+        />
+    <variable
+        name="presenter"
+        type="com.gigigo.myapplication.MainActivityPresenter"
+        />
+  </data>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:weightSum="1"
+      >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@={temp.location}"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@={temp.celsius}"
+          />
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:text="@={temp.celsius}"
+          />
+
+      <Button
+          android:id="@+id/button"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:onClick="@{() -> presenter.onShowData(temp)}"
+          android:text="Show data model"
+          />
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:onClick="@{() -> presenter.showList()}"
+          android:text="Start second activity"
+          />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+      <EditText
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@={counter.name}"
+          android:textSize="20dp"
+          />
+
+    <!--  <EditText
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@{counter.visible}"
+          android:visibility="@{counter.isVisible ? View.VISIBLE : View.GONE}"/>
+          />-->
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@{Integer.toString(counter.number)}"
+          android:textSize="20dp"
+          />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:orientation="vertical"
+        >
+      <Button
+          android:id="@+id/btnCountDown"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="InitCounter"
+          />
+      <Button
+          android:id="@+id/btnSayHello"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="write your name"
+          android:text="SayHello"
+          />
+    </LinearLayout>
+
+  </LinearLayout>
+</layout>
